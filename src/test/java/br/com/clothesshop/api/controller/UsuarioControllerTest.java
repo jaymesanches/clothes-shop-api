@@ -101,4 +101,26 @@ public class UsuarioControllerTest extends ClothesShopApiApplicationTests {
 			
 		// @formatter:on
 	}
+	
+	@Test
+	public void deve_retornar_usuario_nao_encontrado_quando_pesquisado_por_nome_inexistente() {
+		Usuario usuario = new Usuario();
+		usuario.setNome("nome inexistente");
+
+		// @formatter:off
+
+		given()
+			.request()
+			.headers("Accept", ContentType.ANY)
+			.headers("Content-type", ContentType.JSON)
+			.body(usuario)
+		.when()
+			.get("/usuarios")
+		.then()
+			.log().body()
+		.and()
+			.log().status()
+			
+		;
+	}
 }
