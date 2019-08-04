@@ -11,28 +11,27 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
 import br.com.clothesshop.api.ClothesShopApiApplicationTests;
-import br.com.clothesshop.api.model.Usuario;
+import br.com.clothesshop.api.model.Grupo;
 import io.restassured.http.ContentType;
 
-public class UsuarioControllerTest extends ClothesShopApiApplicationTests {
+public class GrupoControllerTest extends ClothesShopApiApplicationTests {
 
-	private final String NOME = "Isabela";
+	private final String NOME = "Grupo 1";
 
 	@Test
-	public void deve_retornar_todos_usuarios() {
+	public void deve_retornar_todos_os_grupos() {
 		// @formatter:off
 		
 		when()
-			.get("/api/usuarios")
+			.get("/api/grupos")
 		.then()
-			.log().body().and()
 			.statusCode(HttpStatus.OK.value());
 		
-		List<Usuario> usuarios =
+		List<Grupo> usuarios =
 				given()
 				  .contentType(ContentType.JSON)
 				.when()
-				  .get("/api/usuarios")
+				  .get("/api/grupos")
 				.then()
 				.extract().response().body().path("");
 		
@@ -42,24 +41,21 @@ public class UsuarioControllerTest extends ClothesShopApiApplicationTests {
 	}
 
 	@Test
-	public void deve_retornar_usuario_por_id() {
+	public void deve_retornar_grupo_por_id() {
 		// @formatter:off
 
 		when()
-  	    	.get("/api/usuarios/1")
+  	    	.get("/api/grupos/1")
   	    .then()
-  	    	.log().body()
-  	    .and()
   	    	.assertThat().body("nome", equalTo(NOME));
 		
 		// @formatter:on
 	}
 
 	@Test
-	public void deve_salvar_um_usuario_no_sistema() {
-		Usuario usuario = new Usuario();
-		usuario.setNome("Jose da Silva");
-		usuario.setEmail("jose@silva.com.br");
+	public void deve_salvar_um_grupo_no_sistema() {
+		Grupo grupo = new Grupo();
+		grupo.setNome(NOME);
 
 		// @formatter:off
 
@@ -67,9 +63,9 @@ public class UsuarioControllerTest extends ClothesShopApiApplicationTests {
 			.request()
 			.headers("Accept", ContentType.ANY)
 			.headers("Content-type", ContentType.JSON)
-			.body(usuario)
+			.body(grupo)
 		.when()
-		.post("/api/usuarios")
+		.post("/api/grupos")
 		.then()
 			.statusCode(HttpStatus.CREATED.value());
 			
@@ -77,10 +73,10 @@ public class UsuarioControllerTest extends ClothesShopApiApplicationTests {
 	}
 	
 	@Test
-	public void deve_alterar_um_usuario_no_sistema() {
-		final String NOVO_NOME = "Novo nome";
-		Usuario usuario = new Usuario();
-		usuario.setNome(NOVO_NOME);
+	public void deve_alterar_um_grupo_no_sistema() {
+		final String NOVO_NOME = "Novo Nome";
+		Grupo grupo = new Grupo();
+		grupo.setNome(NOVO_NOME);
 
 		// @formatter:off
 
@@ -88,9 +84,9 @@ public class UsuarioControllerTest extends ClothesShopApiApplicationTests {
 			.request()
 			.headers("Accept", ContentType.ANY)
 			.headers("Content-type", ContentType.JSON)
-			.body(usuario)
+			.body(grupo)
 		.when()
-		.put("/api/usuarios/1")
+		.put("/api/grupos/1")
 		.then()
 			.log().body()
 		.and()

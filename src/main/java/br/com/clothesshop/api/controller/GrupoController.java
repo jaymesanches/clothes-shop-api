@@ -22,7 +22,7 @@ import br.com.clothesshop.api.model.Grupo;
 import br.com.clothesshop.api.service.GrupoService;
 
 @RestController
-@RequestMapping("/grupos")
+@RequestMapping("/api/grupos")
 public class GrupoController {
 
 	@Autowired
