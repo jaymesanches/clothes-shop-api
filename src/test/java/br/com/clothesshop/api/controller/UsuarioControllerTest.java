@@ -17,6 +17,7 @@ import io.restassured.http.ContentType;
 public class UsuarioControllerTest extends ClothesShopApiApplicationTests {
 
 	private final String NOME = "Isabela";
+	private final String EMAIL = "isabela@bela.com.br";
 
 	@Test
 	public void deve_retornar_todos_usuarios() {
@@ -58,8 +59,8 @@ public class UsuarioControllerTest extends ClothesShopApiApplicationTests {
 	@Test
 	public void deve_salvar_um_usuario_no_sistema() {
 		Usuario usuario = new Usuario();
-		usuario.setNome("Jose da Silva");
-		usuario.setEmail("jose@silva.com.br");
+		usuario.setNome(NOME);
+		usuario.setEmail(EMAIL);
 
 		// @formatter:off
 
@@ -81,6 +82,7 @@ public class UsuarioControllerTest extends ClothesShopApiApplicationTests {
 		final String NOVO_NOME = "Novo nome";
 		Usuario usuario = new Usuario();
 		usuario.setNome(NOVO_NOME);
+		usuario.setEmail(EMAIL);
 
 		// @formatter:off
 
