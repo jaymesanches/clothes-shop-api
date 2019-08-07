@@ -23,6 +23,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import br.com.clothesshop.api.service.exception.EmailJaCadastradoException;
+import br.com.clothesshop.api.service.exception.RegistroNaoEncontradoException;
 
 @ControllerAdvice
 public class AppExceptionHandler extends ResponseEntityExceptionHandler {
@@ -71,7 +72,17 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler({ EmailJaCadastradoException.class })
 	public ResponseEntity<Object> handleEmailJaCadastradoException(EmailJaCadastradoException ex,
 			WebRequest request) {
-		String mensagemUsuario = messageSource.getMessage("email.ja-cadastrado", null,
+		String mensagemUsuario = messageSource.getMessage("sistema.email-ja-cadastrado", null,
+				LocaleContextHolder.getLocale());
+		String mensagemDesenvolvedor = ExceptionUtils.getRootCauseMessage(ex);
+		List<Erro> erros = Arrays.asList(new Erro(mensagemUsuario, mensagemDesenvolvedor));
+		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	}
+	
+	@ExceptionHandler({ RegistroNaoEncontradoException.class })
+	public ResponseEntity<Object> handleRegistroNaoEncontradoException(RegistroNaoEncontradoException ex,
+			WebRequest request) {
+		String mensagemUsuario = messageSource.getMessage("sistema.registro-nao-encontrado", null,
 				LocaleContextHolder.getLocale());
 		String mensagemDesenvolvedor = ExceptionUtils.getRootCauseMessage(ex);
 		List<Erro> erros = Arrays.asList(new Erro(mensagemUsuario, mensagemDesenvolvedor));

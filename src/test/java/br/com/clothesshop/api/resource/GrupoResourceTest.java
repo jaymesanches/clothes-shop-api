@@ -1,4 +1,4 @@
-package br.com.clothesshop.api.controller;
+package br.com.clothesshop.api.resource;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
@@ -14,7 +14,7 @@ import br.com.clothesshop.api.ClothesShopApiApplicationTests;
 import br.com.clothesshop.api.model.Grupo;
 import io.restassured.http.ContentType;
 
-public class GrupoControllerTest extends ClothesShopApiApplicationTests {
+public class GrupoResourceTest extends ClothesShopApiApplicationTests {
 
 	private final String NOME = "Grupo 1";
 

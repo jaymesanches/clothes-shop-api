@@ -5,7 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationEvent;
 
 public class SingleResourceRetrieved extends ApplicationEvent {
-    private HttpServletResponse response;
+	private static final long serialVersionUID = -6567201807590162904L;
+	
+	private HttpServletResponse response;
  
     public SingleResourceRetrieved(Object source, HttpServletResponse response) {
         super(source);

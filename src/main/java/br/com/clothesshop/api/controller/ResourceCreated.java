@@ -5,7 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationEvent;
 
 public class ResourceCreated extends ApplicationEvent {
-    private HttpServletResponse response;
+	private static final long serialVersionUID = 7508708996107087347L;
+	
+	private HttpServletResponse response;
     private long idOfNewResource;
  
     public ResourceCreated(Object source, 

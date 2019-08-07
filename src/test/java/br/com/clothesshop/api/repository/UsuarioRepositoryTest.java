@@ -19,7 +19,7 @@ import br.com.clothesshop.api.model.Usuario;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @TestPropertySource("classpath:application-test.properties")
-public class UsuarioControllerTest {
+public class UsuarioRepositoryTest {
 
 	private final String NOME = "Jayme Sanches";
 	private final String EMAIL = "jaymesanches@yahoo.com.br";

@@ -1,4 +1,4 @@
-package br.com.clothesshop.api.controller;
+package br.com.clothesshop.api.resource;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
@@ -14,7 +14,7 @@ import br.com.clothesshop.api.ClothesShopApiApplicationTests;
 import br.com.clothesshop.api.model.Usuario;
 import io.restassured.http.ContentType;
 
-public class UsuarioControllerTest extends ClothesShopApiApplicationTests {
+public class UsuarioResourceTest extends ClothesShopApiApplicationTests {
 
 	private final String NOME = "Isabela";
 	private final String EMAIL = "isabela@bela.com.br";

@@ -19,7 +19,7 @@ import br.com.clothesshop.api.repository.GrupoRepository;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @TestPropertySource("classpath:application-test.properties")
-public class GrupoControllerTest {
+public class GrupoRepositoryTest {
 
 	private final String NOME = "Nome do Grupo";
 	
