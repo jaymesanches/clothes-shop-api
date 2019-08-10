@@ -1,5 +1,6 @@
 package br.com.clothesshop.api.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ public class ProdutoService {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 
-	public void create(Produto produto) {
-		produtoRepository.save(produto);
+	public Produto create(Produto produto) {
+		return produtoRepository.save(produto);
 	}
 
 	public Produto findOne(long id) {
@@ -24,6 +25,14 @@ public class ProdutoService {
 
 	public Optional<Produto> consultarPorCodigo(long codigo) throws Exception {
 		return produtoRepository.findByCodigo(codigo);
+	}
+
+	public List<Produto> findAll() {
+		return produtoRepository.findAll();
+	}
+
+	public Produto update(Long id, Produto produto) {
+		return produtoRepository.save(produto);
 	}
 
 }

@@ -1,4 +1,4 @@
-package br.com.clothesshop.api.controller;
+package br.com.clothesshop.api.resource;
 
 import javax.servlet.http.HttpServletResponse;
 

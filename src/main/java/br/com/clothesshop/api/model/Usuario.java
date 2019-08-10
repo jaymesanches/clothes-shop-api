@@ -29,7 +29,7 @@ public class Usuario {
 	private String email;
 
 	@ManyToMany(mappedBy = "usuarios")
-	@JsonIgnoreProperties("grupos")
+	@JsonIgnoreProperties("usuarios")
 	private List<Grupo> grupos;
 
 	public Long getId() {

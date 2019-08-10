@@ -2,9 +2,9 @@ package br.com.clothesshop.api.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,9 +26,9 @@ public class Grupo {
 	@Column(nullable = false)
 	private String nome;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "grupo_usuario", joinColumns = @JoinColumn(name = "id_grupo", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_ususario", referencedColumnName = "id"))
-	@JsonIgnoreProperties("usuarios")
+	@JsonIgnoreProperties("grupos")
 	private List<Usuario> usuarios;
 
 	public Long getId() {

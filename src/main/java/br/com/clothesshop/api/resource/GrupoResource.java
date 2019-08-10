@@ -1,4 +1,4 @@
-package br.com.clothesshop.api.controller;
+package br.com.clothesshop.api.resource;
 
 import java.util.List;
 
@@ -18,45 +18,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.clothesshop.api.model.Usuario;
-import br.com.clothesshop.api.service.UsuarioService;
+import br.com.clothesshop.api.model.Grupo;
+import br.com.clothesshop.api.service.GrupoService;
 
 @RestController
-@RequestMapping(value = "/api/usuarios")
-public class UsuarioController {
+@RequestMapping("/api/grupos")
+public class GrupoResource {
 
 	@Autowired
-	private ApplicationEventPublisher eventPublisher;
-
+    private ApplicationEventPublisher eventPublisher;
+	
 	@Autowired
-	private UsuarioService usuarioService;
+	private GrupoService grupoService;
 
 	@GetMapping
-	public List<Usuario> findAll(HttpServletResponse response) {
-		List<Usuario> usuarios = usuarioService.findAll();
+	public List<Grupo> findAll(HttpServletResponse response) {
+		List<Grupo> grupos = grupoService.findAll();
 		eventPublisher.publishEvent(new SingleResourceRetrieved(this, response));
-		return usuarios;
+		return grupos;
 	}
 
-	@GetMapping(value = "/{id}")
-	public Usuario findById(@PathVariable("id") Long id, HttpServletResponse response) {
-		Usuario resourceById = usuarioService.findOne(id);
+	@GetMapping("/{id}")
+	public Grupo findById(@PathVariable("id") Long id, HttpServletResponse response) {
+		Grupo resourceById = grupoService.findOne(id);
 		eventPublisher.publishEvent(new SingleResourceRetrieved(this, response));
 		return resourceById;
 	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void create(@RequestBody Usuario resource, HttpServletResponse response) throws Exception {
-		Long newId = usuarioService.create(resource).getId();
+	public void create(@RequestBody Grupo resource, HttpServletResponse response) {
+		Long newId = grupoService.create(resource).getId();
 		eventPublisher.publishEvent(new ResourceCreated(this, response, newId));
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Usuario> update(@PathVariable Long id, @Valid @RequestBody Usuario resource, HttpServletResponse response) {
+	public ResponseEntity<Grupo> update(@PathVariable Long id, @Valid @RequestBody Grupo resource, HttpServletResponse response) {
 		try {
-			Usuario usuarioSalvo = usuarioService.update(id, resource);
-			return ResponseEntity.ok(usuarioSalvo);
+			Grupo grupoSalvo = grupoService.update(id, resource);
+			return ResponseEntity.ok(grupoSalvo);
 		} catch (IllegalArgumentException e) {
 			return ResponseEntity.notFound().build();
 		}

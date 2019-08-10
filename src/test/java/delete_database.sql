@@ -1,3 +1,4 @@
+DELETE FROM public.grupo_usuario;
 DELETE FROM public.usuario;
 DELETE FROM public.grupo;
 DELETE FROM public.estoque;
