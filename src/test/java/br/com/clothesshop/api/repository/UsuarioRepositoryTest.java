@@ -23,6 +23,7 @@ public class UsuarioRepositoryTest {
 
 	private final String NOME = "Jayme Sanches";
 	private final String EMAIL = "jaymesanches@yahoo.com.br";
+	private final String SENHA = "12345";
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -69,6 +70,7 @@ public class UsuarioRepositoryTest {
 		Usuario usuario = new Usuario();
 		usuario.setNome(NOME);
 		usuario.setEmail(EMAIL);
+		usuario.setSenha(SENHA);
 		return usuario;
 	}
 }

@@ -10,7 +10,10 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import br.com.clothesshop.api.ClothesShopApiApplicationTests;
+import br.com.clothesshop.api.IgnoreJacksonWriteOnlyAccess;
 import br.com.clothesshop.api.model.Usuario;
 import io.restassured.http.ContentType;
 
@@ -18,6 +21,7 @@ public class UsuarioResourceTest extends ClothesShopApiApplicationTests {
 
 	private final String NOME = "Isabela";
 	private final String EMAIL = "isabela@bela.com.br";
+	private final String SENHA = "12345";
 
 	@Test
 	public void deve_retornar_todos_usuarios() {
@@ -58,18 +62,25 @@ public class UsuarioResourceTest extends ClothesShopApiApplicationTests {
 	}
 
 	@Test
-	public void deve_salvar_um_usuario_no_sistema() {
+	public void deve_salvar_um_usuario_no_sistema() throws Exception {
 		Usuario usuario = new Usuario();
 		usuario.setNome(NOME);
 		usuario.setEmail(EMAIL);
+		usuario.setSenha(SENHA);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.setAnnotationIntrospector(new IgnoreJacksonWriteOnlyAccess());
+
+		String serialized = objectMapper.writeValueAsString(usuario);
 
 		// @formatter:off
 
 		given()
-			.request()
-			.headers("Accept", ContentType.ANY)
-			.headers("Content-type", ContentType.JSON)
-			.body(usuario)
+//			.request()
+//			.headers("Accept", ContentType.ANY)
+//			.headers("Content-type", ContentType.JSON)
+			.contentType("application/json")
+			.body(serialized)
 		.when()
 		.post("/api/usuarios")
 		.then()
@@ -79,11 +90,17 @@ public class UsuarioResourceTest extends ClothesShopApiApplicationTests {
 	}
 	
 	@Test
-	public void deve_alterar_um_usuario_no_sistema() {
+	public void deve_alterar_um_usuario_no_sistema() throws Exception {
 		final String NOVO_NOME = "Novo nome";
 		Usuario usuario = new Usuario();
 		usuario.setNome(NOVO_NOME);
 		usuario.setEmail(EMAIL);
+		usuario.setSenha(SENHA);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.setAnnotationIntrospector(new IgnoreJacksonWriteOnlyAccess());
+
+		String serialized = objectMapper.writeValueAsString(usuario);
 
 		// @formatter:off
 
@@ -91,7 +108,7 @@ public class UsuarioResourceTest extends ClothesShopApiApplicationTests {
 			.request()
 			.headers("Accept", ContentType.ANY)
 			.headers("Content-type", ContentType.JSON)
-			.body(usuario)
+			.body(serialized)
 		.when()
 		.put("/api/usuarios/1")
 		.then()

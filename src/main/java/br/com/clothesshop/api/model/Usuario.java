@@ -11,6 +11,7 @@ import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -27,6 +28,10 @@ public class Usuario {
 	@NotNull
 	@Column(nullable = false)
 	private String email;
+	
+	@NotNull
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private String senha;
 
 	@ManyToMany(mappedBy = "usuarios")
 	@JsonIgnoreProperties("usuarios")
@@ -54,6 +59,14 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public List<Grupo> getGrupos() {
