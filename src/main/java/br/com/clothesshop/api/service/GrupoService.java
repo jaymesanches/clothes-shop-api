@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.clothesshop.api.model.Grupo;
-import br.com.clothesshop.api.repository.GrupoRepository;
+import br.com.clothesshop.api.repository.grupo.GrupoRepository;
 
 @Service
 public class GrupoService {

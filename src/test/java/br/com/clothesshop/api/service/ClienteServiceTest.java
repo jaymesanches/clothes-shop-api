@@ -17,7 +17,7 @@ import br.com.clothesshop.api.repository.grupo.GrupoRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class GrupoServiceTest {
+public class ClienteServiceTest {
 	
 	private final String NOME = "GRUPO";
 

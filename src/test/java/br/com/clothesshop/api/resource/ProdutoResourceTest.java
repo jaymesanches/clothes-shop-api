@@ -78,6 +78,29 @@ public class ProdutoResourceTest extends ClothesShopApiApplicationTests {
 			
 		// @formatter:on
 	}
+	
+	@Test
+	public void deve_salvar_um_produto_com_estoque_no_sistema() {
+		Produto produto = new Produto();
+		produto.setCodigo(CODIGO);
+		produto.setDescricao(DESCRICAO);
+		produto.setTamanhoG(10);
+		produto.setTamanhoM(5);
+		
+		// @formatter:off
+		
+		given()
+			.request()
+			.headers("Accept", ContentType.ANY)
+			.headers("Content-type", ContentType.JSON)
+			.body(produto)
+		.when()
+			.post("/api/produtos")
+		.then()
+			.statusCode(HttpStatus.CREATED.value());
+		
+		// @formatter:on
+	}
 
 	@Test
 	public void deve_alterar_um_produto_no_sistema() {

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.clothesshop.api.model.Usuario;
-import br.com.clothesshop.api.repository.UsuarioRepository;
+import br.com.clothesshop.api.repository.usuario.UsuarioRepository;
 import br.com.clothesshop.api.service.exception.EmailJaCadastradoException;
 
 @Service

@@ -66,4 +66,13 @@ public class ProdutoServiceTest {
 		verify(produtoRepository).findByCodigo(CODIGO);
 		assertThat(produtoEncontrado.get().getDescricao()).isEqualTo(DESCRICAO);
 	}
+	
+	@Test
+	public void deve_gravar_produto_com_estoque() {
+		produto.setTamanhoG(10);
+		when(produtoService.create(produto)).thenReturn(produto);
+		Produto produtoSalvo = produtoService.create(produto);
+		verify(produtoRepository).save(produto);
+		assertThat(produtoSalvo.getTamanhoG()).isEqualTo(10);
+	}
 }

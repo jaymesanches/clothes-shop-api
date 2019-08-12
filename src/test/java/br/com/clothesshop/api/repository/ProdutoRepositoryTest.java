@@ -37,9 +37,10 @@ public class ProdutoRepositoryTest {
 	private EntityManager entityManager;
 	
 	@Test
-	public void deve_gravar_usuario_no_repositorio() {
+	public void deve_gravar_produto_no_repositorio() {
 		Produto produtoSalvo = salvarProduto();
 		assertThat(produtoSalvo.getDescricao()).isEqualTo(DESCRICAO);
+		assertThat(produtoSalvo.getTamanhoG()).isEqualTo(10);
 	}
 
 	@Test(expected = ConstraintViolationException.class)
@@ -81,6 +82,8 @@ public class ProdutoRepositoryTest {
 		produto.setDetalhes("asd");
 		produto.setValorCusto(VALOR);
 		produto.setMargemLucroPadrao(MARGEM_PADRAO);
+		produto.setTamanhoG(10);
+		produto.setTamanhoM(5);
 		return produto;
 	}
 }

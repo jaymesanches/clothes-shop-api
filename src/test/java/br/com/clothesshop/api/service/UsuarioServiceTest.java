@@ -15,7 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.clothesshop.api.model.Usuario;
-import br.com.clothesshop.api.repository.UsuarioRepository;
+import br.com.clothesshop.api.repository.usuario.UsuarioRepository;
 import br.com.clothesshop.api.service.exception.EmailJaCadastradoException;
 
 @RunWith(SpringRunner.class)

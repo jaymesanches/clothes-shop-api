@@ -1,4 +1,4 @@
-package br.com.clothesshop.api.repository;
+package br.com.clothesshop.api.repository.grupo;
 
 import java.util.Optional;
 

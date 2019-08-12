@@ -14,7 +14,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.clothesshop.api.model.Grupo;
-import br.com.clothesshop.api.repository.GrupoRepository;
+import br.com.clothesshop.api.repository.grupo.GrupoRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
