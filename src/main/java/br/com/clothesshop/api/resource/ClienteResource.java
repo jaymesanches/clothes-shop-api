@@ -33,9 +33,9 @@ public class ClienteResource {
 
 	@GetMapping
 	public List<Cliente> findAll(HttpServletResponse response) {
-		List<Cliente> grupos = clienteService.findAll();
+		List<Cliente> clientes = clienteService.findAll();
 		eventPublisher.publishEvent(new SingleResourceRetrieved(this, response));
-		return grupos;
+		return clientes;
 	}
 
 	@GetMapping("/{id}")

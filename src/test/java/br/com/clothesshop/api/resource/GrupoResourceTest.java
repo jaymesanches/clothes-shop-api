@@ -27,7 +27,7 @@ public class GrupoResourceTest extends ClothesShopApiApplicationTests {
 		.then()
 			.statusCode(HttpStatus.OK.value());
 		
-		List<Grupo> usuarios =
+		List<Grupo> grupos =
 				given()
 				  .contentType(ContentType.JSON)
 				.when()
@@ -35,7 +35,7 @@ public class GrupoResourceTest extends ClothesShopApiApplicationTests {
 				.then()
 				.extract().response().body().path("");
 		
-		assertThat(usuarios.size()).isEqualTo(2);
+		assertThat(grupos.size()).isEqualTo(2);
 		
 		// @formatter:on
 	}

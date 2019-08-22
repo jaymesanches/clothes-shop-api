@@ -1,4 +1,9 @@
 DELETE FROM public.grupo_usuario;
 DELETE FROM public.usuario;
 DELETE FROM public.grupo;
+DELETE FROM public.pedido;
+DELETE FROM public.item;
 DELETE FROM public.produto;
+DELETE FROM public.contato;
+DELETE FROM public.endereco;
+DELETE FROM public.cliente;

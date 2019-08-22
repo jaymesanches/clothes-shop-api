@@ -74,6 +74,8 @@ public class ProdutoResourceTest extends ClothesShopApiApplicationTests {
 		.when()
 			.post("/api/produtos")
 		.then()
+			.log().status()
+		.and()
 			.statusCode(HttpStatus.CREATED.value());
 			
 		// @formatter:on
@@ -82,8 +84,8 @@ public class ProdutoResourceTest extends ClothesShopApiApplicationTests {
 	@Test
 	public void deve_salvar_um_produto_com_estoque_no_sistema() {
 		Produto produto = new Produto();
-		produto.setCodigo(CODIGO);
-		produto.setDescricao(DESCRICAO);
+		produto.setCodigo(123333);
+		produto.setDescricao(DESCRICAO+"123");
 		produto.setTamanhoG(10);
 		produto.setTamanhoM(5);
 		
@@ -97,6 +99,8 @@ public class ProdutoResourceTest extends ClothesShopApiApplicationTests {
 		.when()
 			.post("/api/produtos")
 		.then()
+			.log().status()
+		.and()
 			.statusCode(HttpStatus.CREATED.value());
 		
 		// @formatter:on
@@ -118,6 +122,8 @@ public class ProdutoResourceTest extends ClothesShopApiApplicationTests {
 		.when()
 			.put("/api/produtos/1")
 		.then()
+			.log().status()
+		.and()
 			.statusCode(HttpStatus.OK.value())
 		.and()
 			.body("descricao", equalTo(NOVA_DESCRICAO))

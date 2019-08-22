@@ -42,7 +42,7 @@ public class UsuarioResourceTest extends ClothesShopApiApplicationTests {
 				.then()
 				.extract().response().body().path("");
 		
-		assertThat(usuarios.size()).isEqualTo(2);
+		assertThat(usuarios.size()).isEqualTo(3);
 		
 		// @formatter:on
 	}
